@@ -54,7 +54,7 @@ export default function Home() {
                 <span className="text-zinc-400 dark:text-zinc-600">experiences.</span>
               </h1>
               <p className="text-xl text-zinc-600 dark:text-zinc-400 max-w-lg leading-relaxed text-balance">
-                I'm Diego, a developer focused on creating accessible, pixel-perfect, and performant web applications.
+                I'm Diego, a developer dedicated to building accessible, performant web applications with clean, structured, and reliable code. While design isn’t my strongest suit, I focus on translating ideas into smooth, functional, and user-friendly experiences.
               </p>
             </div>
             <div className="flex gap-4">
@@ -85,10 +85,10 @@ export default function Home() {
               <h2 className="text-3xl font-bold mb-6 tracking-tight">About Me</h2>
               <div className="space-y-4 text-zinc-600 dark:text-zinc-400 leading-relaxed text-lg">
                 <p>
-                  I'm a fresh graduate with a degree in Computer Science. With a strong passion for coding and problem-solving, I've spent my time building web applications and learning the latest web technologies.
+                 I'm a fresh Computer Science graduate with a strong passion for coding and problem-solving. I’ve spent my time developing web applications and exploring modern web technologies.
                 </p>
                 <p>
-                  I also have a strong background in networking, with certifications from Cisco. When I'm not coding, you can find me exploring new technologies or designing user interfaces.
+                 I also have a solid background in networking, backed by Cisco certifications. When I'm not coding, you'll usually find me learning new tools, tackling technical challenges, or improving my front-end implementation skills.
                 </p>
               </div>
             </div>
