@@ -50,7 +50,7 @@ export default function Home() {
           <div className="flex-1 space-y-8">
             <div className="space-y-4">
               <h1 className="text-5xl md:text-7xl font-bold tracking-tighter text-balance">
-                Developing clean and accessible <br/>
+                Building modern <br/>
                 <span className="text-zinc-400 dark:text-zinc-600">web experiences.</span>
               </h1>
               <p className="text-xl text-zinc-600 dark:text-zinc-400 max-w-lg leading-relaxed text-balance">
