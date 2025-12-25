@@ -88,7 +88,7 @@ export default function Home() {
                  I'm a fresh Computer Science graduate with a strong passion for coding and problem-solving. I’ve spent my time developing web applications and exploring modern web technologies.
                 </p>
                 <p>
-                 I also have a solid background in networking, backed by Cisco certifications. When I'm not coding, you'll usually find me learning new tools, tackling technical challenges, or improving my front-end implementation skills.
+                 I have a solid background in networking, backed by Cisco certifications and hands-on experience with TP-Link Omada and VSOL fiber network solutions. When I’m not coding, I actively learn new tools, tackle technical challenges, and continuously improve my front-end implementation skills.
                 </p>
               </div>
             </div>
