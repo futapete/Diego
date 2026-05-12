@@ -1,11 +1,27 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Github, Linkedin, Mail, ExternalLink, ArrowRight, Award } from "lucide-react";
+import { Mail, ExternalLink, ArrowRight } from "lucide-react";
 import { projects } from "./data/projects";
 import { Navigation } from "./components/Navigation";
 import { Certifications } from "./components/Certifications";
 
 export default function Home() {
+  const techStack = [
+    "React",
+    "Vue.js",
+    "Tailwind CSS",
+    "JavaScript",
+    "Laravel",
+    "Node.js",
+    "Express.js",
+    "Electron",
+    "MySQL",
+    "SQLite",
+    "REST API Integration",
+    "Git",
+    "Performance Optimization",
+  ];
+
   const certifications = [
     {
       title: "Introduction to Cybersecurity",
@@ -50,11 +66,11 @@ export default function Home() {
           <div className="flex-1 space-y-8">
             <div className="space-y-4">
               <h1 className="text-5xl md:text-7xl font-bold tracking-tighter text-balance">
-                Building modern <br/>
-                <span className="text-zinc-400 dark:text-zinc-600">web experiences.</span>
+                Building reliable <br/>
+                <span className="text-zinc-400 dark:text-zinc-600">business systems.</span>
               </h1>
               <p className="text-xl text-zinc-600 dark:text-zinc-400 max-w-lg leading-relaxed text-balance">
-                I'm Diego, a developer dedicated to building accessible, performant web applications with clean, structured, and reliable code. While design isn’t my strongest suit, I focus on translating ideas into smooth, functional, and user-friendly experiences.
+                I&apos;m Diego, a full-stack developer focused on building practical business software, admin tools, and web platforms with clean architecture, reliable workflows, and maintainable code.
               </p>
             </div>
             <div className="flex gap-4">
@@ -85,17 +101,17 @@ export default function Home() {
               <h2 className="text-3xl font-bold mb-6 tracking-tight">About Me</h2>
               <div className="space-y-4 text-zinc-600 dark:text-zinc-400 leading-relaxed text-lg">
                 <p>
-                 I'm a fresh Computer Science graduate with a strong passion for coding and problem-solving. I’ve spent my time developing web applications and exploring modern web technologies.
+                  I&apos;m a Computer Science graduate with hands-on experience building ecommerce platforms, admin portals, and desktop systems for day-to-day business operations.
                 </p>
                 <p>
-                 I have a solid background in networking, backed by Cisco certifications and hands-on experience with TP-Link Omada and VSOL fiber network solutions. When I’m not coding, I actively learn new tools, tackle technical challenges, and continuously improve my front-end implementation skills.
+                  My work covers frontend interfaces, backend logic, database design, and system integration. I also have a solid networking background backed by Cisco certifications and practical experience with TP-Link Omada and VSOL fiber solutions.
                 </p>
               </div>
             </div>
             <div className="bg-zinc-50 dark:bg-zinc-900/50 rounded-3xl p-8 border border-zinc-100 dark:border-zinc-800/50">
               <h3 className="font-semibold mb-6 text-foreground">Tech Stack</h3>
               <div className="flex flex-wrap gap-2">
-                {["PHP", "Laravel", "JavaScript", "Tailwind CSS", "SQL", "Networking", "React", "Next.js", "Git"].map((tech) => (
+                {techStack.map((tech) => (
                   <span key={tech} className="px-4 py-2 bg-white dark:bg-zinc-800 rounded-full text-sm font-medium border border-zinc-200 dark:border-zinc-700/50 shadow-sm">
                     {tech}
                   </span>
@@ -107,7 +123,7 @@ export default function Home() {
 
         {/* Certifications Section */}
         <section id="certifications" className="py-16 border-t border-zinc-100 dark:border-zinc-900">
-          <h2 className="text-3xl font-bold mb-12 tracking-tight">Certifications</h2>view
+          <h2 className="text-3xl font-bold mb-12 tracking-tight">Certifications</h2>
           <Certifications certs={certifications} />
         </section>
 
@@ -152,9 +168,9 @@ export default function Home() {
 
         {/* Contact Section */}
         <section id="contact" className="py-20 border-t border-zinc-100 dark:border-zinc-900 text-center">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 tracking-tight">Let's work together.</h2>
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 tracking-tight">Let&apos;s work together.</h2>
           <p className="text-xl text-zinc-600 dark:text-zinc-400 mb-10 max-w-xl mx-auto">
-            I'm currently open to new opportunities. Whether you have a question or just want to say hi, I'll try my best to get back to you!
+            I&apos;m currently open to new opportunities. Whether you have a question or just want to say hi, I&apos;ll try my best to get back to you!
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <a href="mailto:diegleo09@gmail.com" className="w-full sm:w-auto px-8 py-4 bg-yellow-400 text-zinc-900 rounded-full font-medium hover:bg-yellow-500 transition-opacity flex items-center justify-center gap-2">
@@ -163,10 +179,10 @@ export default function Home() {
             </a>
             <div className="flex gap-4">
               <a href="https://github.com/futapete" target="_blank" rel="noopener noreferrer" className="p-4 border border-zinc-200 dark:border-zinc-800 rounded-full hover:bg-zinc-100 dark:hover:bg-zinc-900 transition-colors">
-                <Github size={20} />
+                <GitHubIcon className="h-5 w-5" />
               </a>
               <a href="https://www.linkedin.com/in/diego-leo-yodico-80b763323/" target="_blank" rel="noopener noreferrer" className="p-4 border border-zinc-200 dark:border-zinc-800 rounded-full hover:bg-zinc-100 dark:hover:bg-zinc-900 transition-colors">
-                <Linkedin size={20} />
+                <LinkedInIcon className="h-5 w-5" />
               </a>
             </div>
           </div>
@@ -180,5 +196,21 @@ export default function Home() {
         </div>
       </footer>
     </div>
+  );
+}
+
+function GitHubIcon({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" className={className}>
+      <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.866-.013-1.699-2.782.605-3.369-1.344-3.369-1.344-.455-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.004.07 1.532 1.032 1.532 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.03-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.748-1.027 2.748-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.31.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.481A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2Z" />
+    </svg>
+  );
+}
+
+function LinkedInIcon({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" className={className}>
+      <path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.11 1 2.48 1h.02C3.87 1 4.98 2.12 4.98 3.5ZM.5 8h4V24h-4V8Zm7 0h3.83v2.18h.05c.53-1.01 1.84-2.18 3.79-2.18 4.05 0 4.8 2.67 4.8 6.14V24h-4v-8.39c0-2-.04-4.58-2.79-4.58-2.79 0-3.22 2.18-3.22 4.43V24h-4V8Z" />
+    </svg>
   );
 }

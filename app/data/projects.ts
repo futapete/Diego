@@ -1,34 +1,66 @@
 export const projects = [
   {
     id: 1,
-    title: "KG3 IT & Warehouse Ecommerce Website",
-    description: "A comprehensive ecommerce platform for IT and warehouse supplies.",
-    category: "Web Development",
+    title: "E-Commerce Platform",
+    description: "A Laravel-based ecommerce platform with product catalog, cart, checkout flow, and order management tools.",
+    category: "Full-Stack Web App",
     image: "/Dieg/image.png",
     screenshots: [
       "/Dieg/Screenshot 2025-11-30 231411.png",
       "/Dieg/Screenshot 2025-11-30 231419.png",
       "/Dieg/Screenshot 2025-11-30 231427.png"
     ],
-    tags: ["PHP Laravel", "Tailwind CSS", "MySQL"],
-    link: "https://kg3itw.com/",
-    github: "#",
-    details: "The KG3 IT & Warehouse Ecommerce Website is a robust online marketplace designed to streamline the procurement of IT equipment and warehouse supplies. Built with PHP Laravel and Tailwind CSS, it offers a seamless shopping experience with features like real-time inventory tracking, secure payment processing, and a user-friendly dashboard for managing orders. The platform aims to bridge the gap between suppliers and businesses, ensuring efficient logistics and supply chain management."
+    tags: ["Laravel", "Tailwind CSS", "MySQL", "REST API Integration"],
+    link: null,
+    github: null,
+    details: "Developed a full-featured ecommerce system focused on product browsing, cart handling, and order management. The platform includes backend business logic, database design, and administrative controls to support daily operations, product maintenance, and customer order workflows."
   },
   {
     id: 2,
-    title: "Al Soriano Appointment System and Database Management",
-    description: "An efficient appointment scheduling and database management system.",
-    category: "Web Development",
+    title: "POS Inventory + HRDTR + Accounting System",
+    description: "A desktop business suite combining POS, inventory, attendance, payroll, and accounting workflows in one application.",
+    category: "Desktop Business System",
+    image: "/Dieg/Screenshot 2025-11-30 231442.png",
+    screenshots: [
+      "/Dieg/Screenshot 2025-11-30 231411.png",
+      "/Dieg/Screenshot 2025-11-30 231419.png",
+      "/Dieg/Screenshot 2025-11-30 231427.png"
+    ],
+    tags: ["Node.js", "Express.js", "Electron", "SQLite"],
+    link: null,
+    github: null,
+    details: "Built a desktop-based business system that combines point of sale, inventory tracking, HR daily time record, payroll, and accounting modules. The application supports sales transactions, stock monitoring, employee attendance, and reporting through an integrated admin interface designed for streamlined business operations."
+  },
+  {
+    id: 3,
+    title: "HRDTR System (HR, Payroll & Daily Time Record)",
+    description: "A desktop HR system for employee records, attendance tracking, and payroll-related processes.",
+    category: "Desktop HR System",
     image: "/Dieg/Picture1.png",
     screenshots: [
       "/Dieg/Picture1.png",
       "/Dieg/Picture2.png",
       "/Dieg/Picture3.png"
     ],
-    tags: ["PHP", "CSS", "JavaScript", "MySQL"],
-    link: "#",
-    github: "#",
-    details: "The Al Soriano Appointment System is a custom-built solution designed to optimize scheduling and data management. It allows users to easily book appointments while providing administrators with powerful tools to manage client databases, track history, and generate reports. The system focuses on usability and performance, ensuring that both staff and clients have a smooth, hassle-free experience. Key features include automated reminders, conflict detection, and secure data storage."
+    tags: ["Node.js", "Electron", "Payroll", "Attendance Tracking"],
+    link: null,
+    github: null,
+    details: "Developed a desktop-based HRDTR system using Node.js and Electron to manage employee records, daily time tracking, and payroll-related workflows. The project centered on creating a practical admin interface for HR teams to monitor attendance data and handle routine personnel management tasks efficiently."
+  },
+  {
+    id: 4,
+    title: "Admin Portal System",
+    description: "A Laravel and Vue.js admin dashboard for managing users, system data, and operational configurations.",
+    category: "Admin Dashboard",
+    image: "/Dieg/Picture2.png",
+    screenshots: [
+      "/Dieg/Picture2.png",
+      "/Dieg/Picture3.png",
+      "/Dieg/Picture1.png"
+    ],
+    tags: ["Laravel", "Vue.js", "MySQL", "REST API Integration"],
+    link: null,
+    github: null,
+    details: "Built a web-based admin portal with a Laravel backend and Vue.js frontend for managing users, system configurations, and operational data through a responsive interface. The portal integrates APIs for real-time data handling and supports everyday administration with a clear control surface for monitoring and updates."
   }
 ];
