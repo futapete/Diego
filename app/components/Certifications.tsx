@@ -1,8 +1,8 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, ShieldCheck } from "lucide-react";
 
 interface Certification {
   title: string;
@@ -22,7 +22,7 @@ export function Certifications({ certs }: CertificationsProps) {
 
   const checkScroll = () => {
     if (scrollContainerRef.current) {
-      const { scrollLeft, scrollWidth, clientWidth } = scrollContainerRef.current;
+      const { clientWidth, scrollLeft, scrollWidth } = scrollContainerRef.current;
       setShowLeftArrow(scrollLeft > 0);
       setShowRightArrow(scrollLeft < scrollWidth - clientWidth - 10);
     }
@@ -50,7 +50,7 @@ export function Certifications({ certs }: CertificationsProps) {
       {showLeftArrow && (
         <button
           onClick={() => scroll("left")}
-          className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-10 p-2 bg-background/80 backdrop-blur-sm border border-zinc-200 dark:border-zinc-800 rounded-full shadow-lg text-zinc-600 dark:text-zinc-400 hover:text-foreground transition-all opacity-0 group-hover:opacity-100 hidden md:flex"
+          className="terminal-shell absolute left-0 top-1/2 z-10 hidden -translate-x-4 -translate-y-1/2 rounded-full p-2 text-neon opacity-0 transition-all group-hover:opacity-100 md:flex"
           aria-label="Scroll left"
         >
           <ChevronLeft size={24} />
@@ -60,7 +60,7 @@ export function Certifications({ certs }: CertificationsProps) {
       {showRightArrow && (
         <button
           onClick={() => scroll("right")}
-          className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-10 p-2 bg-background/80 backdrop-blur-sm border border-zinc-200 dark:border-zinc-800 rounded-full shadow-lg text-zinc-600 dark:text-zinc-400 hover:text-foreground transition-all opacity-0 group-hover:opacity-100 hidden md:flex"
+          className="terminal-shell absolute right-0 top-1/2 z-10 hidden translate-x-4 -translate-y-1/2 rounded-full p-2 text-neon opacity-0 transition-all group-hover:opacity-100 md:flex"
           aria-label="Scroll right"
         >
           <ChevronRight size={24} />
@@ -70,8 +70,8 @@ export function Certifications({ certs }: CertificationsProps) {
       <div
         ref={scrollContainerRef}
         onScroll={checkScroll}
-        className="flex gap-6 overflow-x-auto pb-8 snap-x snap-mandatory scrollbar-hide -mx-6 px-6"
-        style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+        className="-mx-6 flex snap-x snap-mandatory gap-6 overflow-x-auto px-6 pb-8 scrollbar-hide"
+        style={{ msOverflowStyle: "none", scrollbarWidth: "none" }}
       >
         {certs.map((cert, index) => (
           <a
@@ -79,20 +79,32 @@ export function Certifications({ certs }: CertificationsProps) {
             href={cert.link}
             target="_blank"
             rel="noopener noreferrer"
-            className="snap-center shrink-0 w-[280px] md:w-[320px] group/card p-6 rounded-2xl bg-zinc-50 dark:bg-zinc-900/50 border border-zinc-100 dark:border-zinc-800 hover:border-yellow-400/50 transition-colors flex flex-col items-center text-center"
+            className="group/card terminal-shell pixel-card snap-center shrink-0 w-[280px] rounded-[1.8rem] p-6 text-left transition-transform hover:-translate-y-1 md:w-[320px]"
           >
-            <div className="relative h-40 w-40 mb-6 group-hover/card:scale-110 transition-transform duration-300">
-              <Image
-                src={cert.image}
-                alt={cert.title}
-                fill
-                className="object-contain"
-              />
+            <div className="terminal-header mb-5">
+              <span className="terminal-dot bg-[#ff6b6b]" />
+              <span className="terminal-dot bg-[color:var(--amber)]" />
+              <span className="terminal-dot bg-[color:var(--neon)]" />
+              <p className="command-line text-xl terminal-muted">verify --badge #{index + 1}</p>
             </div>
-            <h3 className="font-semibold mb-2 group-hover/card:text-blue-600 dark:group-hover/card:text-blue-400 transition-colors line-clamp-2">
+            <div className="crt-screen mb-6 flex aspect-square items-center justify-center overflow-hidden rounded-[1.4rem] border terminal-border terminal-panel-strong p-5">
+              <div className="relative h-full w-full transition-transform duration-300 group-hover/card:scale-105">
+                <Image
+                  src={cert.image}
+                  alt={cert.title}
+                  fill
+                  className="object-contain"
+                />
+              </div>
+            </div>
+            <div className="mb-3 flex items-center gap-2 text-sm text-neon">
+              <ShieldCheck size={16} />
+              <span className="section-kicker">Certified</span>
+            </div>
+            <h3 className="mb-2 line-clamp-2 text-lg font-semibold text-foreground">
               {cert.title}
             </h3>
-            <p className="text-sm text-zinc-500">{cert.issuer}</p>
+            <p className="command-line text-2xl terminal-muted">issuer: {cert.issuer}</p>
           </a>
         ))}
       </div>

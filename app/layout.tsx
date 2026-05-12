@@ -1,20 +1,22 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Oxanium, VT323 } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const oxanium = Oxanium({
+  variable: "--font-oxanium",
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const vt323 = VT323({
+  variable: "--font-vt323",
   subsets: ["latin"],
+  weight: "400",
 });
 
 export const metadata: Metadata = {
   title: "Diego Leo Yodico",
-  description: "Portfolio of Diego Leo Yodico",
+  description: "Retro-futuristic developer portfolio of Diego Leo Yodico",
 };
 
 export default function RootLayout({
@@ -23,9 +25,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${oxanium.variable} ${vt323.variable} antialiased`}
       >
         {children}
       </body>
