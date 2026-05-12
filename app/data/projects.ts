@@ -38,11 +38,11 @@ export const projects = [
     title: "HRDTR System (HR, Payroll & Daily Time Record)",
     description: "A desktop HR system for employee records, attendance tracking, and payroll-related processes.",
     category: "Desktop HR System",
-    image: "/projects/pos-system/dashboard.png",
+    image: "/projects/hrdtr/dashboard.png",
     screenshots: [
-      "/projects/pos-system/dashboard.png",
-      "/projects/pos-system/products.png",
-      "/projects/pos-system/suppliers.png"
+      "/projects/hrdtr/dashboard.png",
+      "/projects/hrdtr/device.png",
+      "/projects/hrdtr/login.png"
     ],
     tags: ["Node.js", "Electron", "Payroll", "Attendance Tracking"],
     link: null,

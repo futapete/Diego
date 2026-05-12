@@ -307,23 +307,41 @@ export default function Home() {
             <p className="command-line text-2xl text-sky-terminal">open project://[id]</p>
           </div>
 
-          <div className="grid gap-6 md:grid-cols-2">
+          <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-12">
             {projects.map((project, index) => (
-              <Link href={`/projects/${project.id}`} key={project.id} className="group terminal-shell pixel-card rounded-[1.8rem] p-4 transition-transform hover:-translate-y-1">
+              <Link
+                href={`/projects/${project.id}`}
+                key={project.id}
+                className={`group terminal-shell project-grid-card pixel-card rounded-[1.8rem] p-4 transition-transform duration-300 hover:-translate-y-1 hover:scale-[1.01] animate-fade-in-up ${index === 2 ? "md:col-span-2 xl:col-span-7" : "xl:col-span-5"}`}
+              >
+                <div className="project-spotlight" />
+                <span className="project-orbit animate-drift left-[-2.5rem] top-12 h-28 w-28 bg-[radial-gradient(circle,rgba(94,255,138,0.26),transparent_70%)]" />
+                <span className="project-orbit animate-float delay-300 right-[-1rem] top-1/2 h-24 w-24 bg-[radial-gradient(circle,rgba(85,196,255,0.24),transparent_68%)]" />
                 <div className="terminal-header mb-4">
                   <span className="terminal-dot bg-[#ff6b6b]" />
                   <span className="terminal-dot bg-[color:var(--amber)]" />
                   <span className="terminal-dot bg-[color:var(--neon)]" />
                   <p className="command-line text-2xl terminal-muted">project_{String(index + 1).padStart(2, "0")}</p>
                 </div>
-                <div className="crt-screen relative mb-5 aspect-[4/3] overflow-hidden rounded-[1.4rem] border terminal-border bg-black/10">
+                <div className={`project-image-shell crt-screen relative mb-5 overflow-hidden rounded-[1.4rem] border terminal-border bg-black/10 ${index === 2 ? "aspect-[19/10]" : "aspect-[16/10]"}`}>
                   <Image
                     src={project.image}
                     alt={project.title}
                     fill
-                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    sizes={index === 2 ? "(min-width: 1280px) 58vw, (min-width: 768px) 100vw, 100vw" : "(min-width: 1280px) 36vw, (min-width: 768px) 50vw, 100vw"}
+                    className="object-cover transition-transform duration-700 group-hover:scale-[1.08]"
                   />
+                  <div className="animate-shimmer absolute inset-y-0 left-[-30%] w-1/3 bg-[linear-gradient(90deg,transparent,rgba(255,255,255,0.22),transparent)] opacity-70" />
                   <div className="animate-scan absolute inset-x-6 top-0 h-10 bg-gradient-to-b from-[rgba(94,255,138,0.22)] to-transparent blur-xl" />
+                  <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-[rgba(6,17,10,0.82)] via-[rgba(6,17,10,0.38)] to-transparent" />
+                  <div className="absolute inset-x-4 bottom-4 flex flex-wrap gap-2">
+                    <span className="rounded-full border terminal-border bg-[rgba(8,24,15,0.72)] px-3 py-1 command-line text-2xl text-neon">
+                      {project.tags[0]}
+                    </span>
+                    <span className="rounded-full border terminal-border bg-[rgba(8,24,15,0.72)] px-3 py-1 command-line text-2xl text-sky-terminal">
+                      {project.tags[1]}
+                    </span>
+                  </div>
                 </div>
                 <div className="flex items-start justify-between gap-4">
                   <div>

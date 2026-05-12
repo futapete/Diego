@@ -22,7 +22,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
 
   return (
     <div className="min-h-screen px-4 pb-16 pt-6 md:px-6 md:pt-8">
-      <nav className="mx-auto max-w-6xl">
+      <nav className="mx-auto max-w-[92rem]">
         <div className="terminal-shell pixel-card flex items-center justify-between rounded-[1.7rem] px-5 py-4">
           <Link href="/#projects" className="command-line flex items-center gap-2 text-2xl text-neon transition-transform hover:-translate-x-1">
             <ArrowLeft size={16} />
@@ -32,8 +32,8 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
         </div>
       </nav>
 
-      <main className="mx-auto mt-6 max-w-6xl animate-fade-in-up">
-        <div className="grid gap-6 lg:grid-cols-[1fr,360px] lg:gap-8">
+      <main className="mx-auto mt-6 max-w-[92rem] animate-fade-in-up">
+        <div className="grid gap-6 xl:grid-cols-[minmax(0,1.28fr)_360px] xl:gap-8">
           <div className="space-y-12">
             <div className="terminal-shell pixel-card rounded-[2rem] p-6 md:p-8">
               <div className="terminal-header">
@@ -51,16 +51,39 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
               <p className="mt-4 text-lg leading-relaxed terminal-muted md:text-xl text-balance">
                 {currentProject.description}
               </p>
+              <div className="mt-6 flex flex-wrap gap-3">
+                <span className="rounded-full border terminal-border bg-neon-soft px-4 py-2 command-line text-2xl text-neon">
+                  showcase://widescreen
+                </span>
+                <span className="rounded-full border terminal-border terminal-panel-strong px-4 py-2 command-line text-2xl text-sky-terminal">
+                  gallery:{currentProject.screenshots?.length ?? 0}
+                </span>
+                <span className="rounded-full border terminal-border terminal-panel-strong px-4 py-2 command-line text-2xl terminal-muted">
+                  stack:{currentProject.tags.length}
+                </span>
+              </div>
             </div>
 
-            <div className="terminal-shell crt-screen pixel-card relative aspect-video w-full overflow-hidden rounded-[2rem] p-3">
+            <div className="terminal-shell crt-screen pixel-card project-image-shell relative w-full overflow-hidden rounded-[2rem] p-3 md:aspect-[21/9] xl:aspect-[23/9] animate-tilt">
+              <div className="project-spotlight" />
               <Image
                 src={currentProject.image}
                 alt={currentProject.title}
                 fill
+                sizes="(min-width: 1536px) 72vw, (min-width: 1280px) 66vw, 100vw"
                 className="rounded-[1.5rem] object-cover"
                 priority
               />
+              <div className="animate-shimmer absolute inset-y-0 left-[-25%] w-1/4 bg-[linear-gradient(90deg,transparent,rgba(255,255,255,0.18),transparent)]" />
+              <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[rgba(6,17,10,0.84)] via-[rgba(6,17,10,0.34)] to-transparent" />
+              <div className="absolute bottom-5 left-5 flex flex-wrap gap-3">
+                <span className="rounded-full border terminal-border bg-[rgba(8,24,15,0.78)] px-4 py-2 command-line text-2xl text-neon">
+                  runtime:active
+                </span>
+                <span className="rounded-full border terminal-border bg-[rgba(8,24,15,0.78)] px-4 py-2 command-line text-2xl text-sky-terminal">
+                  ui:immersive
+                </span>
+              </div>
             </div>
 
             <div className="terminal-shell pixel-card rounded-[2rem] p-6 md:p-8">
@@ -80,15 +103,23 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                   </div>
                   <Sparkles size={18} className="text-[color:var(--amber)]" />
                 </div>
-                <div className="mt-6 grid gap-6">
+                <div className="mt-6 grid gap-6 xl:grid-cols-2">
                   {currentProject.screenshots.map((shot, index) => (
-                    <div key={index} className="terminal-shell crt-screen pixel-card relative aspect-video overflow-hidden rounded-[1.6rem] p-2">
+                    <div
+                      key={index}
+                      className={`terminal-shell crt-screen pixel-card project-image-shell relative overflow-hidden rounded-[1.6rem] p-2 animate-fade-in-up ${index === 0 ? "xl:col-span-2 aspect-[21/10]" : "aspect-[16/10]"}`}
+                    >
                       <Image
                         src={shot}
                         alt={`${currentProject.title} screenshot ${index + 1}`}
                         fill
+                        sizes={index === 0 ? "(min-width: 1280px) 66vw, 100vw" : "(min-width: 1280px) 33vw, 100vw"}
                         className="rounded-[1.2rem] object-cover"
                       />
+                      <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-[rgba(6,17,10,0.78)] to-transparent" />
+                      <div className="absolute bottom-4 left-4 rounded-full border terminal-border bg-[rgba(8,24,15,0.78)] px-3 py-1 command-line text-2xl text-neon">
+                        frame_{String(index + 1).padStart(2, "0")}
+                      </div>
                     </div>
                   ))}
                 </div>
@@ -97,7 +128,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
           </div>
 
           <div>
-            <div className="sticky top-6 space-y-6 lg:top-8">
+            <div className="sticky top-6 space-y-6 xl:top-8">
               <div className="terminal-shell pixel-card rounded-[2rem] p-6">
                 <div className="terminal-header">
                   <span className="terminal-dot bg-[#ff6b6b]" />

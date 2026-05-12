@@ -208,6 +208,61 @@ button {
   text-shadow: 0 0 18px rgba(94, 255, 138, 0.22);
 }
 
+.project-orbit {
+  position: absolute;
+  border-radius: 999px;
+  filter: blur(2px);
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.project-spotlight {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at top left, rgba(94, 255, 138, 0.2), transparent 34%),
+    radial-gradient(circle at bottom right, rgba(85, 196, 255, 0.16), transparent 32%),
+    linear-gradient(180deg, rgba(7, 17, 10, 0.02), rgba(7, 17, 10, 0.3));
+  pointer-events: none;
+}
+
+.project-grid-card {
+  overflow: hidden;
+}
+
+.project-grid-card::before {
+  content: "";
+  position: absolute;
+  inset: -30% auto auto -10%;
+  width: 240px;
+  height: 240px;
+  border-radius: 999px;
+  background: radial-gradient(circle, rgba(94, 255, 138, 0.18), transparent 68%);
+  opacity: 0;
+  transform: translate3d(-20px, 10px, 0);
+  transition: opacity 260ms ease, transform 260ms ease;
+  pointer-events: none;
+}
+
+.project-grid-card:hover::before {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+.project-image-shell {
+  position: relative;
+  isolation: isolate;
+}
+
+.project-image-shell::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.18), transparent 34%, transparent 70%, rgba(94, 255, 138, 0.12));
+  opacity: 0.7;
+  pointer-events: none;
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;
@@ -260,10 +315,24 @@ button {
   .animate-scan {
     animation: scanLine 6s linear infinite;
   }
+
+  .animate-drift {
+    animation: drift 8s ease-in-out infinite;
+  }
+
+  .animate-tilt {
+    animation: tiltPulse 7s ease-in-out infinite;
+    transform-origin: center;
+  }
+
+  .animate-shimmer {
+    animation: shimmerSweep 4.5s linear infinite;
+  }
   
   .delay-100 { animation-delay: 100ms; }
   .delay-200 { animation-delay: 200ms; }
   .delay-300 { animation-delay: 300ms; }
+  .delay-500 { animation-delay: 500ms; }
 }
 
 @keyframes fadeIn {
@@ -289,4 +358,19 @@ button {
 @keyframes scanLine {
   from { transform: translateY(-120%); }
   to { transform: translateY(320%); }
+}
+
+@keyframes drift {
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  50% { transform: translate3d(0, -12px, 0); }
+}
+
+@keyframes tiltPulse {
+  0%, 100% { transform: perspective(1000px) rotateX(0deg) rotateY(0deg); }
+  50% { transform: perspective(1000px) rotateX(1.4deg) rotateY(-2deg); }
+}
+
+@keyframes shimmerSweep {
+  from { transform: translateX(-140%) skewX(-18deg); }
+  to { transform: translateX(220%) skewX(-18deg); }
 }
