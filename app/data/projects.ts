@@ -8,7 +8,7 @@ export const projects = [
     screenshots: [
       "/Dieg/Screenshot 2025-11-30 231411.png",
       "/Dieg/Screenshot 2025-11-30 231419.png",
-      "/Dieg/Screenshot 2025-11-30 231427.png"
+      "/Dieg/Screenshot 2025-11-30 231442.png"
     ],
     tags: ["Laravel", "Tailwind CSS", "MySQL", "REST API Integration"],
     link: null,
@@ -20,11 +20,13 @@ export const projects = [
     title: "POS Inventory + HRDTR + Accounting System",
     description: "A desktop business suite combining POS, inventory, attendance, payroll, and accounting workflows in one application.",
     category: "Desktop Business System",
-    image: "/Dieg/Screenshot 2025-11-30 231442.png",
+    image: "/projects/pos-system/pos.png",
     screenshots: [
-      "/Dieg/Screenshot 2025-11-30 231411.png",
-      "/Dieg/Screenshot 2025-11-30 231419.png",
-      "/Dieg/Screenshot 2025-11-30 231427.png"
+      "/projects/pos-system/dashboard.png",
+      "/projects/pos-system/products.png",
+      "/projects/pos-system/inventory.png",
+      "/projects/pos-system/categories.png",
+      "/projects/pos-system/suppliers.png"
     ],
     tags: ["Node.js", "Express.js", "Electron", "SQLite"],
     link: null,
@@ -36,11 +38,11 @@ export const projects = [
     title: "HRDTR System (HR, Payroll & Daily Time Record)",
     description: "A desktop HR system for employee records, attendance tracking, and payroll-related processes.",
     category: "Desktop HR System",
-    image: "/Dieg/Picture1.png",
+    image: "/projects/pos-system/dashboard.png",
     screenshots: [
-      "/Dieg/Picture1.png",
-      "/Dieg/Picture2.png",
-      "/Dieg/Picture3.png"
+      "/projects/pos-system/dashboard.png",
+      "/projects/pos-system/products.png",
+      "/projects/pos-system/suppliers.png"
     ],
     tags: ["Node.js", "Electron", "Payroll", "Attendance Tracking"],
     link: null,
@@ -52,11 +54,11 @@ export const projects = [
     title: "Admin Portal System",
     description: "A Laravel and Vue.js admin dashboard for managing users, system data, and operational configurations.",
     category: "Admin Dashboard",
-    image: "/Dieg/Picture2.png",
+    image: "/projects/admin-portal/dashboard.png",
     screenshots: [
-      "/Dieg/Picture2.png",
-      "/Dieg/Picture3.png",
-      "/Dieg/Picture1.png"
+      "/projects/admin-portal/dashboard.png",
+      "/projects/admin-portal/overview.png",
+      "/projects/admin-portal/login.png"
     ],
     tags: ["Laravel", "Vue.js", "MySQL", "REST API Integration"],
     link: null,
