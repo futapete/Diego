@@ -26,7 +26,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
         <div className="terminal-shell pixel-card flex items-center justify-between rounded-[1.7rem] px-5 py-4">
           <Link href="/#projects" className="command-line flex items-center gap-2 text-2xl text-neon transition-transform hover:-translate-x-1">
             <ArrowLeft size={16} />
-            back://projects
+            Back to projects
           </Link>
           <span className="section-kicker hidden md:block">Project Runtime</span>
         </div>
@@ -157,11 +157,11 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                         href={currentProject.link}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="retro-button retro-button-primary w-full justify-between font-semibold text-foreground"
+                        className="retro-button retro-button-primary retro-button-duo w-full justify-between font-semibold text-foreground"
                       >
                         <span className="flex items-center gap-2">
                           <ExternalLink size={18} />
-                          Visit Live Site
+                          View live preview
                         </span>
                         <ArrowIcon className="h-4 w-4" />
                       </a>
@@ -171,29 +171,29 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                         href={currentProject.github}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="retro-button w-full justify-between font-semibold text-foreground"
+                        className="retro-button retro-button-duo w-full justify-between font-semibold text-foreground"
                       >
                         <span className="flex items-center gap-2">
                           <GitHubIcon className="h-[18px] w-[18px]" />
-                          Source Code
+                          Review source
                         </span>
                       </a>
                     )}
                   </div>
                 ) : (
                   <p className="text-sm terminal-muted">
-                    Demo links and source access are available on request.
+                    Live demonstrations and source walkthroughs are available on request.
                   </p>
                 )}
               </div>
 
               <div className="terminal-shell pixel-card rounded-[2rem] p-6">
-                <h3 className="font-semibold mb-2">Need a project like this?</h3>
+                <h3 className="mb-2 font-semibold">Interested in a similar build?</h3>
                 <p className="mb-4 text-sm terminal-muted">
-                  I can help you build similar high-quality applications.
+                  I design and ship systems with the same focus on clarity, speed, and operational reliability.
                 </p>
-                <Link href="/#contact" className="retro-button retro-button-primary w-full font-semibold text-foreground">
-                  Contact me <ArrowIcon className="ml-1 h-4 w-4" />
+                <Link href="/#contact" className="retro-button retro-button-primary retro-button-duo w-full font-semibold text-foreground">
+                  Discuss your project <ArrowIcon className="ml-1 h-4 w-4" />
                 </Link>
               </div>
             </div>

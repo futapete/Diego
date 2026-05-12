@@ -1,10 +1,11 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Command, Gamepad2 } from "lucide-react";
+import { Command, Gamepad2, Menu, X } from "lucide-react";
 
 export function Navigation() {
   const [activeSection, setActiveSection] = useState("");
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -26,6 +27,17 @@ export function Navigation() {
     });
 
     return () => sections.forEach((section) => observer.unobserve(section));
+  }, []);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 768) {
+        setMenuOpen(false);
+      }
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   const links = [
@@ -50,7 +62,7 @@ export function Navigation() {
         <div className="hidden items-center gap-2 md:flex">
           <div className="mr-3 flex items-center gap-2 rounded-full border terminal-border px-3 py-1.5 terminal-panel text-xs terminal-muted">
             <Command size={14} className="text-sky-terminal" />
-            CLI NAV
+            Navigation
           </div>
           {links.map((link) => (
             <a
@@ -66,8 +78,40 @@ export function Navigation() {
             </a>
           ))}
         </div>
-        <div className="command-line text-2xl text-neon md:hidden">&gt; menu.exe</div>
+        <button
+          type="button"
+          className="retro-button retro-button-duo px-3 py-2 text-foreground md:hidden"
+          aria-expanded={menuOpen}
+          aria-controls="mobile-nav-menu"
+          aria-label={menuOpen ? "Close navigation menu" : "Open navigation menu"}
+          onClick={() => setMenuOpen((current) => !current)}
+        >
+          {menuOpen ? <X size={18} /> : <Menu size={18} />}
+          Menu
+        </button>
       </div>
+
+      {menuOpen && (
+        <div id="mobile-nav-menu" className="terminal-shell pixel-card mx-auto mt-3 max-w-6xl rounded-[1.4rem] p-3 md:hidden">
+          <div className="grid gap-2">
+            {links.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                onClick={() => setMenuOpen(false)}
+                className={`retro-button justify-between text-left font-semibold ${
+                  activeSection === link.id
+                    ? "retro-button-primary text-foreground"
+                    : "text-foreground"
+                }`}
+              >
+                <span>{link.label}</span>
+                <span className="command-line text-2xl text-neon">/{link.id}</span>
+              </a>
+            ))}
+          </div>
+        </div>
+      )}
     </nav>
   );
 }

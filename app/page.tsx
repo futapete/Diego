@@ -25,10 +25,10 @@ export default function Home() {
   ];
 
   const terminalFeed = [
-    "npm run deploy:portfolio // theme pack loaded",
-    "laravel artisan optimize // admin workflows tuned",
-    "electron build --prod // desktop systems compiled",
-    "mysql schema sync // operational data stabilized",
+    "npm run deploy:portfolio // interface system initialized",
+    "php artisan optimize // administrative workflows refined",
+    "electron build --prod // desktop runtime packaged",
+    "mysql schema sync // data structures validated",
   ];
 
   const specializations = [
@@ -88,13 +88,13 @@ export default function Home() {
       title: "CPA: Programming Essentials in C++",
       issuer: "Cisco",
       image: "/cpa-cpp.jpg",
-      link: "#",
+      link: null,
     },
     {
       title: "CPP: Advanced Programming in C++",
       issuer: "Cisco",
       image: "/cpp-advanced.jpg",
-      link: "#",
+      link: null,
     },
   ];
 
@@ -115,10 +115,10 @@ export default function Home() {
               <div className="space-y-6">
                 <div className="flex flex-wrap gap-3">
                   <span className="rounded-full border terminal-border bg-neon-soft px-4 py-2 section-kicker">Retro-Futuristic Build</span>
-                  <span className="rounded-full border terminal-border px-4 py-2 command-line text-2xl text-sky-terminal">theme: terminal x platformer</span>
+                  <span className="rounded-full border terminal-border px-4 py-2 command-line text-2xl text-sky-terminal">theme: terminal x platform-inspired motion</span>
                 </div>
                 <div className="space-y-4">
-                  <p className="section-kicker">&gt; Mission Select</p>
+                  <p className="section-kicker">&gt; Professional Overview</p>
                   <h1 className="glow-text max-w-3xl text-5xl font-extrabold leading-[0.95] tracking-[-0.04em] text-balance md:text-7xl">
                     Premium systems engineering with arcade energy.
                   </h1>
@@ -126,12 +126,26 @@ export default function Home() {
                     I build ecommerce platforms, admin dashboards, and desktop operations software with clean architecture, fast workflows, and a polished user experience that feels intentional from first load to final action.
                   </p>
                 </div>
+                <div className="duo-showcase terminal-shell rounded-[1.5rem] p-4 terminal-panel-strong" aria-hidden="true">
+                  <div className="flex items-center justify-between gap-4">
+                    <div>
+                      <p className="section-kicker">Motion Layer</p>
+                      <p className="mt-1 text-sm terminal-muted">Original red-and-green platform-inspired motion, designed to keep the interface distinctive while staying professional.</p>
+                    </div>
+                    <div className="platformer-lane">
+                      <span className="platformer-pipe platformer-pipe-left" />
+                      <span className="platformer-block platformer-block-center" />
+                      <span className="platformer-runner platformer-runner-red" />
+                      <span className="platformer-runner platformer-runner-green" />
+                    </div>
+                  </div>
+                </div>
                 <div className="flex flex-wrap gap-3">
-                  <a href="#projects" className="retro-button retro-button-primary font-semibold text-foreground">
-                    Launch Projects <ArrowRight size={16} />
+                  <a href="#projects" className="retro-button retro-button-primary retro-button-duo font-semibold text-foreground">
+                    View Projects <ArrowRight size={16} />
                   </a>
-                  <a href="#contact" className="retro-button font-semibold text-foreground">
-                    Open Comms <Mail size={16} />
+                  <a href="#contact" className="retro-button retro-button-duo font-semibold text-foreground">
+                    Contact Me <Mail size={16} />
                   </a>
                 </div>
                 <div className="grid gap-3 sm:grid-cols-3">
@@ -373,15 +387,15 @@ export default function Home() {
             <div className="mt-8 flex flex-wrap gap-3">
               <a href="mailto:diegleo09@gmail.com" className="retro-button retro-button-primary font-semibold text-foreground">
                 <Mail size={18} />
-                Say Hello
+                Start a Conversation
               </a>
-              <a href="https://github.com/futapete" target="_blank" rel="noopener noreferrer" className="retro-button font-semibold text-foreground">
+              <a href="https://github.com/futapete" target="_blank" rel="noopener noreferrer" className="retro-button retro-button-duo font-semibold text-foreground">
                 <GitHubIcon className="h-5 w-5" />
-                GitHub
+                GitHub Profile
               </a>
-              <a href="https://www.linkedin.com/in/diego-leo-yodico-80b763323/" target="_blank" rel="noopener noreferrer" className="retro-button font-semibold text-foreground">
+              <a href="https://www.linkedin.com/in/diego-leo-yodico-80b763323/" target="_blank" rel="noopener noreferrer" className="retro-button retro-button-duo font-semibold text-foreground">
                 <LinkedInIcon className="h-5 w-5" />
-                LinkedIn
+                LinkedIn Profile
               </a>
             </div>
           </div>
