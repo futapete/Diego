@@ -82,14 +82,14 @@ export default function Home() {
               </a>
             </div>
           </div>
-          <div className="relative w-full max-w-sm md:max-w-[26rem] aspect-[5/4] shrink-0 overflow-hidden rounded-[2rem]">
-            <div className="absolute inset-0 bg-gradient-to-t from-black/12 via-transparent to-white/10 pointer-events-none z-10" />
+          <div className="group w-full max-w-sm md:max-w-[28rem] shrink-0">
             <Image
               src="/me.jpg"
               alt="Diego"
-              fill
-              sizes="(max-width: 768px) 100vw, 26rem"
-              className="object-cover object-center"
+              width={900}
+              height={900}
+              sizes="(max-width: 768px) 100vw, 28rem"
+              className="h-auto w-full object-contain drop-shadow-[0_24px_60px_rgba(15,23,42,0.16)] transition-transform duration-500 ease-out will-change-transform group-hover:-translate-y-2 group-hover:scale-[1.03] group-hover:rotate-[-1.5deg]"
               priority
             />
           </div>
