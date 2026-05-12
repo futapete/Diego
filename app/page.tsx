@@ -1,25 +1,64 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Mail, ExternalLink, ArrowRight } from "lucide-react";
+import { Mail, ExternalLink, ArrowRight, Gauge, Workflow } from "lucide-react";
 import { projects } from "./data/projects";
 import { Navigation } from "./components/Navigation";
 import { Certifications } from "./components/Certifications";
 
 export default function Home() {
   const techStack = [
-    "React",
-    "Vue.js",
-    "Tailwind CSS",
-    "JavaScript",
-    "Laravel",
-    "Node.js",
-    "Express.js",
-    "Electron",
-    "MySQL",
-    "SQLite",
-    "REST API Integration",
-    "Git",
-    "Performance Optimization",
+    {
+      name: "React",
+      icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React" className="h-8 w-8" />,
+    },
+    {
+      name: "Vue.js",
+      icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg" alt="Vue.js" className="h-8 w-8" />,
+    },
+    {
+      name: "Tailwind CSS",
+      icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" alt="Tailwind CSS" className="h-8 w-8" />,
+    },
+    {
+      name: "JavaScript",
+      icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript" className="h-8 w-8" />,
+    },
+    {
+      name: "Laravel",
+      icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/laravel/laravel-original.svg" alt="Laravel" className="h-8 w-8" />,
+    },
+    {
+      name: "Node.js",
+      icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="Node.js" className="h-8 w-8" />,
+    },
+    {
+      name: "Express.js",
+      icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg" alt="Express.js" className="h-8 w-8" />,
+    },
+    {
+      name: "Electron",
+      icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/electron/electron-original.svg" alt="Electron" className="h-8 w-8" />,
+    },
+    {
+      name: "MySQL",
+      icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL" className="h-8 w-8" />,
+    },
+    {
+      name: "SQLite",
+      icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sqlite/sqlite-original.svg" alt="SQLite" className="h-8 w-8" />,
+    },
+    {
+      name: "REST API Integration",
+      icon: <Workflow className="h-8 w-8 text-zinc-700 dark:text-zinc-300" aria-hidden="true" />,
+    },
+    {
+      name: "Git",
+      icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git" className="h-8 w-8" />,
+    },
+    {
+      name: "Performance Optimization",
+      icon: <Gauge className="h-8 w-8 text-zinc-700 dark:text-zinc-300" aria-hidden="true" />,
+    },
   ];
 
   const certifications = [
@@ -62,36 +101,37 @@ export default function Home() {
 
       <main className="max-w-5xl mx-auto px-6 pt-20 pb-12">
         {/* Hero Section */}
-        <section className="py-10 md:py-16 flex flex-col-reverse md:flex-row items-center justify-between gap-8 animate-fade-in-up">
-          <div className="flex-1 space-y-8">
-            <div className="space-y-4">
-              <h1 className="text-5xl md:text-7xl font-bold tracking-tighter text-balance">
-                Building reliable <br/>
-                <span className="text-zinc-400 dark:text-zinc-600">business systems.</span>
-              </h1>
-              <p className="text-xl text-zinc-600 dark:text-zinc-400 max-w-lg leading-relaxed text-balance">
-                I&apos;m Diego, a full-stack developer focused on building practical business software, admin tools, and web platforms with clean architecture, reliable workflows, and maintainable code.
-              </p>
+        <section className="py-10 md:py-16 animate-fade-in-up">
+          <div className="flex flex-col gap-10 md:flex-row md:items-center md:justify-between">
+            <div className="max-w-3xl space-y-8">
+              <div className="space-y-4">
+                <h1 className="text-5xl md:text-7xl font-bold tracking-tighter text-balance">
+                  Building reliable <br/>
+                  <span className="text-zinc-400 dark:text-zinc-600">business systems.</span>
+                </h1>
+                <p className="text-xl text-zinc-600 dark:text-zinc-400 max-w-lg leading-relaxed text-balance">
+                  I&apos;m Diego, a full-stack developer focused on building practical business software, admin tools, and web platforms with clean architecture, reliable workflows, and maintainable code.
+                </p>
+              </div>
+              <div className="flex gap-4">
+                <a href="#projects" className="group px-6 py-3 bg-yellow-400 text-zinc-900 rounded-full font-medium hover:bg-yellow-500 transition-all flex items-center gap-2">
+                  Projects <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform"/>
+                </a>
+                <a href="#contact" className="px-6 py-3 border border-zinc-200 dark:border-zinc-800 rounded-full font-medium hover:bg-zinc-100 dark:hover:bg-zinc-900 transition-colors">
+                  Contact Me
+                </a>
+              </div>
             </div>
-            <div className="flex gap-4">
-              <a href="#projects" className="group px-6 py-3 bg-yellow-400 text-zinc-900 rounded-full font-medium hover:bg-yellow-500 transition-all flex items-center gap-2">
-                Projects <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform"/>
-              </a>
-              <a href="#contact" className="px-6 py-3 border border-zinc-200 dark:border-zinc-800 rounded-full font-medium hover:bg-zinc-100 dark:hover:bg-zinc-900 transition-colors">
-                Contact Me
-              </a>
+            <div className="mx-auto w-full max-w-xs shrink-0 md:mx-0 md:max-w-sm">
+              <Image
+                src="/thinker.svg"
+                alt="The Thinker illustration"
+                width={420}
+                height={520}
+                className="h-auto w-full drop-shadow-[0_24px_48px_rgba(15,23,42,0.12)]"
+                priority
+              />
             </div>
-          </div>
-          <div className="group w-full max-w-sm md:max-w-[28rem] shrink-0">
-            <Image
-              src="/me.jpg"
-              alt="Diego"
-              width={900}
-              height={900}
-              sizes="(max-width: 768px) 100vw, 28rem"
-              className="h-auto w-full object-contain drop-shadow-[0_24px_60px_rgba(15,23,42,0.16)] transition-transform duration-500 ease-out will-change-transform group-hover:-translate-y-2 group-hover:scale-[1.03] group-hover:rotate-[-1.5deg]"
-              priority
-            />
           </div>
         </section>
 
@@ -111,11 +151,16 @@ export default function Home() {
             </div>
             <div className="bg-zinc-50 dark:bg-zinc-900/50 rounded-3xl p-8 border border-zinc-100 dark:border-zinc-800/50">
               <h3 className="font-semibold mb-6 text-foreground">Tech Stack</h3>
-              <div className="flex flex-wrap gap-2">
+              <div className="grid grid-cols-3 sm:grid-cols-4 gap-4">
                 {techStack.map((tech) => (
-                  <span key={tech} className="px-4 py-2 bg-white dark:bg-zinc-800 rounded-full text-sm font-medium border border-zinc-200 dark:border-zinc-700/50 shadow-sm">
-                    {tech}
-                  </span>
+                  <div
+                    key={tech.name}
+                    title={tech.name}
+                    className="flex h-16 w-16 items-center justify-center rounded-full border border-zinc-200 bg-white shadow-sm transition-transform hover:-translate-y-1 dark:border-zinc-700/50 dark:bg-zinc-800"
+                  >
+                    <span className="sr-only">{tech.name}</span>
+                    {tech.icon}
+                  </div>
                 ))}
               </div>
             </div>
