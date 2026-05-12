@@ -1,8 +1,8 @@
-import Image from "next/image";
 import Link from "next/link";
-import { ArrowLeft, ExternalLink, Layers3, Sparkles } from "lucide-react";
-import { notFound } from "next/navigation";
+import Image from "next/image";
+import { ArrowLeft, ExternalLink } from "lucide-react";
 import { projects } from "../../data/projects";
+import { notFound } from "next/navigation";
 
 interface ProjectPageProps {
   params: Promise<{
@@ -12,7 +12,7 @@ interface ProjectPageProps {
 
 export default async function ProjectPage({ params }: ProjectPageProps) {
   const { id } = await params;
-  const project = projects.find((entry) => entry.id === Number(id));
+  const project = projects.find((p) => p.id === Number(id));
 
   if (!project) {
     notFound();
@@ -21,105 +21,61 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
   const currentProject = project;
 
   return (
-    <div className="min-h-screen px-4 pb-16 pt-6 md:px-6 md:pt-8">
-      <nav className="mx-auto max-w-[92rem]">
-        <div className="terminal-shell pixel-card flex items-center justify-between rounded-[1.7rem] px-5 py-4">
-          <Link href="/#projects" className="command-line flex items-center gap-2 text-2xl text-neon transition-transform hover:-translate-x-1">
-            <ArrowLeft size={16} />
-            Back to projects
+    <div className="min-h-screen bg-background text-foreground font-sans selection:bg-blue-100 dark:selection:bg-blue-900">
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-zinc-200/50 dark:border-zinc-800/50">
+        <div className="max-w-7xl mx-auto px-6 h-14 flex items-center">
+          <Link href="/#projects" className="group flex items-center gap-2 text-sm font-medium text-zinc-600 dark:text-zinc-400 hover:text-foreground transition-colors">
+            <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" />
+            Back to Projects
           </Link>
-          <span className="section-kicker hidden md:block">Project Runtime</span>
         </div>
       </nav>
 
-      <main className="mx-auto mt-6 max-w-[92rem] animate-fade-in-up">
-        <div className="grid gap-6 xl:grid-cols-[minmax(0,1.28fr)_360px] xl:gap-8">
+      <main className="max-w-7xl mx-auto px-6 pt-20 pb-12 animate-fade-in-up">
+        <div className="grid lg:grid-cols-[1fr,400px] gap-8 lg:gap-16">
+          {/* Main Content */}
           <div className="space-y-12">
-            <div className="terminal-shell pixel-card rounded-[2rem] p-6 md:p-8">
-              <div className="terminal-header">
-                <span className="terminal-dot bg-[#ff6b6b]" />
-                <span className="terminal-dot bg-[color:var(--amber)]" />
-                <span className="terminal-dot bg-[color:var(--neon)]" />
-                <p className="command-line text-2xl terminal-muted">project://{currentProject.id}</p>
-              </div>
-              <div className="mt-6 flex items-center gap-3 text-sm font-medium text-neon">
-                <span className="rounded-full border terminal-border bg-neon-soft px-3 py-1.5 section-kicker">
+            <div className="space-y-6">
+              <div className="flex items-center gap-3 text-sm font-medium text-blue-600 dark:text-blue-400">
+                <span className="px-3 py-1 rounded-full bg-blue-50 dark:bg-blue-900/30 border border-blue-100 dark:border-blue-800">
                   {currentProject.category}
                 </span>
               </div>
-              <h1 className="mt-5 text-4xl font-bold tracking-[-0.05em] text-balance md:text-6xl">{currentProject.title}</h1>
-              <p className="mt-4 text-lg leading-relaxed terminal-muted md:text-xl text-balance">
+              <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-balance">{currentProject.title}</h1>
+              <p className="text-xl text-zinc-600 dark:text-zinc-400 leading-relaxed text-balance">
                 {currentProject.description}
               </p>
-              <div className="mt-6 flex flex-wrap gap-3">
-                <span className="rounded-full border terminal-border bg-neon-soft px-4 py-2 command-line text-2xl text-neon">
-                  showcase://widescreen
-                </span>
-                <span className="rounded-full border terminal-border terminal-panel-strong px-4 py-2 command-line text-2xl text-sky-terminal">
-                  gallery:{currentProject.screenshots?.length ?? 0}
-                </span>
-                <span className="rounded-full border terminal-border terminal-panel-strong px-4 py-2 command-line text-2xl terminal-muted">
-                  stack:{currentProject.tags.length}
-                </span>
-              </div>
             </div>
 
-            <div className="terminal-shell crt-screen pixel-card project-image-shell relative w-full overflow-hidden rounded-[2rem] p-3 md:aspect-[21/9] xl:aspect-[23/9] animate-tilt">
-              <div className="project-spotlight" />
-              <Image
-                src={currentProject.image}
-                alt={currentProject.title}
-                fill
-                sizes="(min-width: 1536px) 72vw, (min-width: 1280px) 66vw, 100vw"
-                className="rounded-[1.5rem] object-cover"
-                priority
-              />
-              <div className="animate-shimmer absolute inset-y-0 left-[-25%] w-1/4 bg-[linear-gradient(90deg,transparent,rgba(255,255,255,0.18),transparent)]" />
-              <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[rgba(6,17,10,0.84)] via-[rgba(6,17,10,0.34)] to-transparent" />
-              <div className="absolute bottom-5 left-5 flex flex-wrap gap-3">
-                <span className="rounded-full border terminal-border bg-[rgba(8,24,15,0.78)] px-4 py-2 command-line text-2xl text-neon">
-                  runtime:active
-                </span>
-                <span className="rounded-full border terminal-border bg-[rgba(8,24,15,0.78)] px-4 py-2 command-line text-2xl text-sky-terminal">
-                  ui:immersive
-                </span>
-              </div>
+            <div className="aspect-video w-full bg-zinc-100 dark:bg-zinc-900 rounded-3xl overflow-hidden relative border border-zinc-200 dark:border-zinc-800 shadow-sm">
+               <Image 
+                 src={currentProject.image} 
+                 alt={currentProject.title}
+                 fill
+                 className="object-cover"
+                 priority
+               />
             </div>
 
-            <div className="terminal-shell pixel-card rounded-[2rem] p-6 md:p-8">
-              <p className="section-kicker">Overview.txt</p>
-              <h2 className="mt-3 text-2xl font-bold md:text-4xl">Build overview</h2>
-              <p className="mt-4 whitespace-pre-line text-lg leading-relaxed terminal-muted">
+            <div className="prose prose-zinc dark:prose-invert max-w-none">
+              <h2 className="text-2xl font-bold mb-4">Overview</h2>
+              <p className="text-lg text-zinc-600 dark:text-zinc-400 leading-relaxed whitespace-pre-line">
                 {currentProject.details}
               </p>
             </div>
 
             {currentProject.screenshots && currentProject.screenshots.length > 0 && (
-              <div className="terminal-shell pixel-card rounded-[2rem] p-6 md:p-8">
-                <div className="flex items-center justify-between gap-4">
-                  <div>
-                    <p className="section-kicker">Gallery.feed</p>
-                    <h2 className="mt-2 text-2xl font-bold md:text-4xl">Project gallery</h2>
-                  </div>
-                  <Sparkles size={18} className="text-[color:var(--amber)]" />
-                </div>
-                <div className="mt-6 grid gap-6 xl:grid-cols-2">
+              <div className="space-y-6">
+                <h2 className="text-2xl font-bold">Project Gallery</h2>
+                <div className="grid gap-8">
                   {currentProject.screenshots.map((shot, index) => (
-                    <div
-                      key={index}
-                      className={`terminal-shell crt-screen pixel-card project-image-shell relative overflow-hidden rounded-[1.6rem] p-2 animate-fade-in-up ${index === 0 ? "xl:col-span-2 aspect-[21/10]" : "aspect-[16/10]"}`}
-                    >
+                    <div key={index} className="group aspect-video relative rounded-2xl overflow-hidden border border-zinc-200 dark:border-zinc-800 shadow-sm hover:shadow-md transition-shadow">
                       <Image
                         src={shot}
                         alt={`${currentProject.title} screenshot ${index + 1}`}
                         fill
-                        sizes={index === 0 ? "(min-width: 1280px) 66vw, 100vw" : "(min-width: 1280px) 33vw, 100vw"}
-                        className="rounded-[1.2rem] object-cover"
+                        className="object-cover"
                       />
-                      <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-[rgba(6,17,10,0.78)] to-transparent" />
-                      <div className="absolute bottom-4 left-4 rounded-full border terminal-border bg-[rgba(8,24,15,0.78)] px-3 py-1 command-line text-2xl text-neon">
-                        frame_{String(index + 1).padStart(2, "0")}
-                      </div>
                     </div>
                   ))}
                 </div>
@@ -127,29 +83,22 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
             )}
           </div>
 
-          <div>
-            <div className="sticky top-6 space-y-6 xl:top-8">
-              <div className="terminal-shell pixel-card rounded-[2rem] p-6">
-                <div className="terminal-header">
-                  <span className="terminal-dot bg-[#ff6b6b]" />
-                  <span className="terminal-dot bg-[color:var(--amber)]" />
-                  <span className="terminal-dot bg-[color:var(--neon)]" />
-                  <p className="command-line text-2xl terminal-muted">stack.map</p>
-                </div>
-                <div className="mt-5 flex flex-wrap gap-2">
+          {/* Sidebar */}
+          <div className="lg:border-l lg:border-zinc-200 lg:dark:border-zinc-800 lg:pl-12">
+            <div className="sticky top-24 space-y-10">
+              <div>
+                <h3 className="text-sm font-semibold text-foreground uppercase tracking-wider mb-4">Technologies</h3>
+                <div className="flex flex-wrap gap-2">
                   {currentProject.tags.map((tag) => (
-                    <span key={tag} className="rounded-full border terminal-border px-3 py-1.5 command-line text-2xl terminal-panel-strong text-sky-terminal">
+                    <span key={tag} className="px-3 py-1.5 bg-zinc-50 dark:bg-zinc-900 rounded-md text-sm font-medium text-zinc-700 dark:text-zinc-300 border border-zinc-200 dark:border-zinc-800">
                       {tag}
                     </span>
                   ))}
                 </div>
               </div>
 
-              <div className="terminal-shell pixel-card rounded-[2rem] p-6">
-                <div className="mb-4 flex items-center gap-3">
-                  <Layers3 size={18} className="text-neon" />
-                  <h3 className="section-kicker">Launch Links</h3>
-                </div>
+              <div>
+                <h3 className="text-sm font-semibold text-foreground uppercase tracking-wider mb-4">Links</h3>
                 {currentProject.link || currentProject.github ? (
                   <div className="flex flex-col gap-3">
                     {currentProject.link && (
@@ -157,13 +106,13 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                         href={currentProject.link}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="retro-button retro-button-primary retro-button-duo w-full justify-between font-semibold text-foreground"
+                        className="flex items-center justify-between w-full p-4 rounded-xl bg-yellow-400 text-zinc-900 hover:bg-yellow-500 transition-colors font-medium group"
                       >
                         <span className="flex items-center gap-2">
                           <ExternalLink size={18} />
-                          View live preview
+                          Visit Live Site
                         </span>
-                        <ArrowIcon className="h-4 w-4" />
+                        <ArrowRight size={16} className="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all" />
                       </a>
                     )}
                     {currentProject.github && (
@@ -171,29 +120,29 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                         href={currentProject.github}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="retro-button retro-button-duo w-full justify-between font-semibold text-foreground"
+                        className="flex items-center justify-between w-full p-4 rounded-xl border border-zinc-200 dark:border-zinc-800 hover:bg-zinc-50 dark:hover:bg-zinc-900 transition-colors font-medium text-zinc-600 dark:text-zinc-400 hover:text-foreground"
                       >
                         <span className="flex items-center gap-2">
                           <GitHubIcon className="h-[18px] w-[18px]" />
-                          Review source
+                          Source Code
                         </span>
                       </a>
                     )}
                   </div>
                 ) : (
-                  <p className="text-sm terminal-muted">
-                    Live demonstrations and source walkthroughs are available on request.
+                  <p className="text-sm text-zinc-600 dark:text-zinc-400">
+                    Demo links and source access are available on request.
                   </p>
                 )}
               </div>
-
-              <div className="terminal-shell pixel-card rounded-[2rem] p-6">
-                <h3 className="mb-2 font-semibold">Interested in a similar build?</h3>
-                <p className="mb-4 text-sm terminal-muted">
-                  I design and ship systems with the same focus on clarity, speed, and operational reliability.
+              
+              <div className="p-6 rounded-2xl bg-zinc-50 dark:bg-zinc-900/50 border border-zinc-100 dark:border-zinc-800">
+                <h3 className="font-semibold mb-2">Need a project like this?</h3>
+                <p className="text-sm text-zinc-600 dark:text-zinc-400 mb-4">
+                  I can help you build similar high-quality applications.
                 </p>
-                <Link href="/#contact" className="retro-button retro-button-primary retro-button-duo w-full font-semibold text-foreground">
-                  Discuss your project <ArrowIcon className="ml-1 h-4 w-4" />
+                <Link href="/#contact" className="text-sm font-medium text-blue-600 dark:text-blue-400 hover:underline">
+                  Contact me &rarr;
                 </Link>
               </div>
             </div>
@@ -204,22 +153,25 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
   );
 }
 
-function ArrowIcon({ className }: { className?: string }) {
+// Helper component for the arrow icon since we can't import it from lucide-react in the same file if we didn't add it to the import list
+function ArrowRight({ size, className }: { size?: number, className?: string }) {
   return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
+    <svg 
+      xmlns="http://www.w3.org/2000/svg" 
+      width={size || 24} 
+      height={size || 24} 
+      viewBox="0 0 24 24" 
+      fill="none" 
+      stroke="currentColor" 
+      strokeWidth="2" 
+      strokeLinecap="round" 
+      strokeLinejoin="round" 
       className={className}
     >
       <path d="M5 12h14" />
       <path d="m12 5 7 7-7 7" />
     </svg>
-  );
+  )
 }
 
 function GitHubIcon({ className }: { className?: string }) {
