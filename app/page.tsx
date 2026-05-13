@@ -1,9 +1,44 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { motion } from "framer-motion";
 import { Mail, ExternalLink, ArrowRight, Gauge, Workflow } from "lucide-react";
 import { projects } from "./data/projects";
 import { Navigation } from "./components/Navigation";
 import { Certifications } from "./components/Certifications";
+
+const sectionReveal = {
+  hidden: { opacity: 0, y: 32 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.65,
+    },
+  },
+};
+
+const staggerGroup = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.08,
+      delayChildren: 0.06,
+    },
+  },
+};
+
+const itemReveal = {
+  hidden: { opacity: 0, y: 22 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.5,
+    },
+  },
+};
 
 export default function Home() {
   const techStack = [
@@ -101,10 +136,15 @@ export default function Home() {
 
       <main className="max-w-5xl mx-auto px-6 pt-20 pb-12">
         {/* Hero Section */}
-        <section className="py-10 md:py-16 animate-fade-in-up">
+        <motion.section
+          className="py-10 md:py-16"
+          initial="hidden"
+          animate="visible"
+          variants={sectionReveal}
+        >
           <div className="flex flex-col gap-10 md:flex-row md:items-center md:justify-between">
-            <div className="max-w-3xl space-y-8">
-              <div className="space-y-4">
+            <motion.div className="max-w-3xl space-y-8" variants={staggerGroup} initial="hidden" animate="visible">
+              <motion.div className="space-y-4" variants={itemReveal}>
                 <h1 className="text-5xl md:text-7xl font-bold tracking-tighter text-balance">
                   Building reliable <br/>
                   <span className="text-zinc-400 dark:text-zinc-600">business systems.</span>
@@ -112,17 +152,17 @@ export default function Home() {
                 <p className="text-xl text-zinc-600 dark:text-zinc-400 max-w-lg leading-relaxed text-balance">
                   I&apos;m Diego, a full-stack developer focused on building practical business software, admin tools, and web platforms with clean architecture, reliable workflows, and maintainable code.
                 </p>
-              </div>
-              <div className="flex gap-4">
+              </motion.div>
+              <motion.div className="flex gap-4" variants={itemReveal}>
                 <a href="#projects" className="group px-6 py-3 bg-yellow-400 text-zinc-900 rounded-full font-medium hover:bg-yellow-500 transition-all flex items-center gap-2">
                   Projects <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform"/>
                 </a>
                 <a href="#contact" className="px-6 py-3 border border-zinc-200 dark:border-zinc-800 rounded-full font-medium hover:bg-zinc-100 dark:hover:bg-zinc-900 transition-colors">
                   Contact Me
                 </a>
-              </div>
-            </div>
-            <div className="mx-auto w-full max-w-xs shrink-0 md:mx-0 md:max-w-sm">
+              </motion.div>
+            </motion.div>
+            <motion.div className="mx-auto w-full max-w-xs shrink-0 md:mx-0 md:max-w-sm" variants={itemReveal} initial="hidden" animate="visible">
               <Image
                 src="/thinker.svg"
                 alt="The Thinker illustration"
@@ -131,14 +171,21 @@ export default function Home() {
                 className="h-auto w-full drop-shadow-[0_24px_48px_rgba(15,23,42,0.12)]"
                 priority
               />
-            </div>
+            </motion.div>
           </div>
-        </section>
+        </motion.section>
 
         {/* About Section */}
-        <section id="about" className="py-16 border-t border-zinc-100 dark:border-zinc-900">
+        <motion.section
+          id="about"
+          className="py-16 border-t border-zinc-100 dark:border-zinc-900"
+          variants={sectionReveal}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+        >
           <div className="grid md:grid-cols-2 gap-12 items-start">
-            <div>
+            <motion.div variants={itemReveal}>
               <h2 className="text-3xl font-bold mb-6 tracking-tight">About Me</h2>
               <div className="space-y-4 text-zinc-600 dark:text-zinc-400 leading-relaxed text-lg">
                 <p>
@@ -148,40 +195,56 @@ export default function Home() {
                   My work covers frontend interfaces, backend logic, database design, and system integration. I also have a solid networking background backed by Cisco certifications and practical experience with TP-Link Omada and VSOL fiber solutions.
                 </p>
               </div>
-            </div>
-            <div className="bg-zinc-50 dark:bg-zinc-900/50 rounded-3xl p-8 border border-zinc-100 dark:border-zinc-800/50">
+            </motion.div>
+            <motion.div className="bg-zinc-50 dark:bg-zinc-900/50 rounded-3xl p-8 border border-zinc-100 dark:border-zinc-800/50" variants={itemReveal}>
               <h3 className="font-semibold mb-6 text-foreground">Tech Stack</h3>
-              <div className="grid grid-cols-3 sm:grid-cols-4 gap-4">
+              <motion.div className="grid grid-cols-3 sm:grid-cols-4 gap-4" variants={staggerGroup} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.3 }}>
                 {techStack.map((tech) => (
-                  <div
+                  <motion.div
                     key={tech.name}
                     title={tech.name}
+                    variants={itemReveal}
                     className="flex h-16 w-16 items-center justify-center rounded-full border border-zinc-200 bg-white shadow-sm transition-transform hover:-translate-y-1 dark:border-zinc-700/50 dark:bg-zinc-800"
                   >
                     <span className="sr-only">{tech.name}</span>
                     {tech.icon}
-                  </div>
+                  </motion.div>
                 ))}
-              </div>
-            </div>
+              </motion.div>
+            </motion.div>
           </div>
-        </section>
+        </motion.section>
 
         {/* Certifications Section */}
-        <section id="certifications" className="py-16 border-t border-zinc-100 dark:border-zinc-900">
-          <h2 className="text-3xl font-bold mb-12 tracking-tight">Certifications</h2>
+        <motion.section
+          id="certifications"
+          className="py-16 border-t border-zinc-100 dark:border-zinc-900"
+          variants={sectionReveal}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+        >
+          <motion.h2 className="text-3xl font-bold mb-12 tracking-tight" variants={itemReveal}>Certifications</motion.h2>
           <Certifications certs={certifications} />
-        </section>
+        </motion.section>
 
         {/* Projects Section */}
-        <section id="projects" className="py-16 border-t border-zinc-100 dark:border-zinc-900">
-          <div className="flex items-end justify-between mb-12">
+        <motion.section
+          id="projects"
+          className="py-16 border-t border-zinc-100 dark:border-zinc-900"
+          variants={sectionReveal}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.15 }}
+        >
+          <motion.div className="flex items-end justify-between mb-12" variants={itemReveal}>
             <h2 className="text-3xl font-bold tracking-tight">Projects</h2>
-          </div>
+          </motion.div>
           
-          <div className="grid md:grid-cols-2 gap-10">
+          <motion.div className="grid md:grid-cols-2 gap-10" variants={staggerGroup} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }}>
             {projects.map((project) => (
-              <Link href={`/projects/${project.id}`} key={project.id} className="group block space-y-4">
+              <motion.div key={project.id} variants={itemReveal}>
+              <Link href={`/projects/${project.id}`} className="group block space-y-4">
                 <div className="aspect-[4/3] bg-zinc-100 dark:bg-zinc-900 rounded-2xl overflow-hidden relative border border-zinc-200 dark:border-zinc-800">
                   <Image 
                     src={project.image} 
@@ -208,17 +271,25 @@ export default function Home() {
                   </div>
                 </div>
               </Link>
+              </motion.div>
             ))}
-          </div>
-        </section>
+          </motion.div>
+        </motion.section>
 
         {/* Contact Section */}
-        <section id="contact" className="py-20 border-t border-zinc-100 dark:border-zinc-900 text-center">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 tracking-tight">Let&apos;s work together.</h2>
-          <p className="text-xl text-zinc-600 dark:text-zinc-400 mb-10 max-w-xl mx-auto">
+        <motion.section
+          id="contact"
+          className="py-20 border-t border-zinc-100 dark:border-zinc-900 text-center"
+          variants={sectionReveal}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.25 }}
+        >
+          <motion.h2 className="text-4xl md:text-5xl font-bold mb-6 tracking-tight" variants={itemReveal}>Let&apos;s work together.</motion.h2>
+          <motion.p className="text-xl text-zinc-600 dark:text-zinc-400 mb-10 max-w-xl mx-auto" variants={itemReveal}>
             I&apos;m currently open to new opportunities. Whether you have a question or just want to say hi, I&apos;ll try my best to get back to you!
-          </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+          </motion.p>
+          <motion.div className="flex flex-col sm:flex-row items-center justify-center gap-4" variants={itemReveal}>
             <a href="mailto:diegleo09@gmail.com" className="w-full sm:w-auto px-8 py-4 bg-yellow-400 text-zinc-900 rounded-full font-medium hover:bg-yellow-500 transition-opacity flex items-center justify-center gap-2">
               <Mail size={20} />
               Say Hello
@@ -231,8 +302,8 @@ export default function Home() {
                 <LinkedInIcon className="h-5 w-5" />
               </a>
             </div>
-          </div>
-        </section>
+          </motion.div>
+        </motion.section>
       </main>
 
       <footer className="border-t border-zinc-200 dark:border-zinc-800 py-12">
