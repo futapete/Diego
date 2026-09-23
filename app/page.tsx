@@ -7,6 +7,7 @@ import { Mail, ExternalLink, ArrowRight, Gauge, Workflow } from "lucide-react";
 import { projects } from "./data/projects";
 import { Navigation } from "./components/Navigation";
 import { Certifications } from "./components/Certifications";
+import { ThinkerStatue } from "./components/ThinkerStatue";
 
 const sectionReveal = {
   hidden: { opacity: 0, y: 32 },
@@ -162,15 +163,8 @@ export default function Home() {
                 </a>
               </motion.div>
             </motion.div>
-            <motion.div className="mx-auto w-full max-w-xs shrink-0 md:mx-0 md:max-w-sm" variants={itemReveal} initial="hidden" animate="visible">
-              <Image
-                src="/thinker.svg"
-                alt="The Thinker illustration"
-                width={420}
-                height={520}
-                className="h-auto w-full drop-shadow-[0_24px_48px_rgba(15,23,42,0.12)]"
-                priority
-              />
+            <motion.div variants={itemReveal} initial="hidden" animate="visible">
+              <ThinkerStatue />
             </motion.div>
           </div>
         </motion.section>

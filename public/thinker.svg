@@ -23,6 +23,35 @@
       <stop stop-color="#9A866F"/>
       <stop offset="1" stop-color="#625344"/>
     </linearGradient>
+    <style>
+      @media (prefers-reduced-motion: no-preference) {
+        .thinker-halo {
+          animation: thinker-halo-pulse 5s ease-in-out infinite;
+          transform-origin: 210px 210px;
+        }
+        .thinker-shadow {
+          animation: thinker-shadow-breathe 5s ease-in-out infinite;
+          transform-origin: 208px 433px;
+        }
+        .thinker-pose {
+          animation: thinker-contemplate 7s ease-in-out infinite;
+          transform-origin: 210px 355px;
+        }
+        @keyframes thinker-halo-pulse {
+          0%, 100% { opacity: 1; transform: scale(1); }
+          50% { opacity: 0.92; transform: scale(1.03); }
+        }
+        @keyframes thinker-shadow-breathe {
+          0%, 100% { transform: scaleX(1); opacity: 0.45; }
+          50% { transform: scaleX(1.08); opacity: 0.38; }
+        }
+        @keyframes thinker-contemplate {
+          0%, 100% { transform: rotate(0deg) translateY(0); }
+          35% { transform: rotate(-1.8deg) translateY(-2px); }
+          70% { transform: rotate(1.2deg) translateY(-1px); }
+        }
+      }
+    </style>
     <filter id="shadow" x="76" y="92" width="270" height="325" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
       <feFlood flood-opacity="0" result="BackgroundImageFix"/>
       <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
@@ -34,11 +63,11 @@
     </filter>
   </defs>
   <rect width="420" height="520" rx="40" fill="url(#bg)"/>
-  <circle cx="210" cy="210" r="154" fill="url(#halo)"/>
-  <ellipse cx="208" cy="433" rx="110" ry="26" fill="#A4AE9A" fill-opacity="0.45"/>
+  <circle class="thinker-halo" cx="210" cy="210" r="154" fill="url(#halo)"/>
+  <ellipse class="thinker-shadow" cx="208" cy="433" rx="110" ry="26" fill="#A4AE9A" fill-opacity="0.45"/>
   <rect x="132" y="356" width="148" height="52" rx="14" fill="url(#bronzePedestal)"/>
   <rect x="150" y="330" width="112" height="38" rx="10" fill="#B7A189"/>
-  <g filter="url(#shadow)">
+  <g class="thinker-pose" filter="url(#shadow)">
     <path d="M238 124C269.48 124 295 149.52 295 181C295 203.017 282.518 222.118 264.252 231.566C267.465 237.961 269.907 245.108 271.429 252.902L282.984 310.131C286.748 328.71 272.543 346 253.587 346H237.9C223.864 346 211.783 336.096 208.993 322.339L202.335 289.512L185.37 323.209C178.916 336.03 165.803 344.14 151.448 344.14H145.23C126.809 344.14 114.623 324.955 122.371 308.242L156.222 235.187C166.637 212.705 189.18 198.268 213.957 198.268H227.632C225.306 192.804 224 186.79 224 181C224 149.52 249.52 124 281 124H238Z" fill="url(#bronzeMain)"/>
     <path d="M226.3 123.482C201.566 123.482 181.516 143.533 181.516 168.266C181.516 184.944 190.618 199.496 204.119 207.211L191.191 247.822L215.218 257.817L228.268 214.516C251.478 213.49 269.979 194.385 269.979 170.915C269.979 144.29 248.925 123.482 226.3 123.482Z" fill="url(#bronzeLight)"/>
     <path d="M227.375 150.594C240.227 150.594 250.646 161.013 250.646 173.865C250.646 186.717 240.227 197.135 227.375 197.135C214.523 197.135 204.104 186.717 204.104 173.865C204.104 161.013 214.523 150.594 227.375 150.594Z" fill="#9D826A"/>
