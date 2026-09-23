@@ -8,7 +8,8 @@ export const projects = [
     screenshots: [
       "/projects/ecommerce/home.png",
       "/projects/ecommerce/clearance.png",
-      "/projects/ecommerce/build-pc.png"
+      "/projects/ecommerce/build-pc.png",
+      "/projects/ecommerce/login.png"
     ],
     tags: ["Laravel", "Tailwind CSS", "MySQL", "REST API Integration"],
     link: "https://kg3itw.com",
