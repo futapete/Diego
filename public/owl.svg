@@ -1,0 +1,134 @@
+<svg width="420" height="520" viewBox="0 0 420 520" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="54" y1="24" x2="348" y2="498" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#EDF1E8"/>
+      <stop offset="1" stop-color="#C7D0C0"/>
+    </linearGradient>
+    <radialGradient id="halo" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(210 200) rotate(90) scale(160)">
+      <stop stop-color="#F6F7F2"/>
+      <stop offset="0.58" stop-color="#E0E6D9"/>
+      <stop offset="1" stop-color="#C7D0C0"/>
+    </radialGradient>
+    <linearGradient id="featherDark" x1="160" y1="140" x2="280" y2="380" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#3D3428"/>
+      <stop offset="0.5" stop-color="#5C4F3F"/>
+      <stop offset="1" stop-color="#2E2720"/>
+    </linearGradient>
+    <linearGradient id="featherMid" x1="180" y1="160" x2="260" y2="320" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#8A7760"/>
+      <stop offset="1" stop-color="#6B5C4A"/>
+    </linearGradient>
+    <linearGradient id="featherLight" x1="190" y1="150" x2="240" y2="240" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#C4B59A"/>
+      <stop offset="1" stop-color="#9A8B74"/>
+    </linearGradient>
+    <linearGradient id="belly" x1="200" y1="240" x2="220" y2="340" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#E8DFCF"/>
+      <stop offset="1" stop-color="#C9BBA5"/>
+    </linearGradient>
+    <linearGradient id="branch" x1="100" y1="360" x2="320" y2="400" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#6B5A48"/>
+      <stop offset="1" stop-color="#4A3D32"/>
+    </linearGradient>
+    <style>
+      @media (prefers-reduced-motion: no-preference) {
+        .owl-shadow {
+          animation: owl-shadow-breathe 6s ease-in-out infinite;
+          transform-origin: 210px 445px;
+        }
+        .owl-head {
+          animation: owl-head-tilt 5s ease-in-out infinite;
+          transform-origin: 210px 195px;
+        }
+        .owl-blink {
+          animation: owl-blink 4s ease-in-out infinite;
+          transform-origin: 210px 188px;
+        }
+        .owl-wing-left {
+          animation: owl-wing 7s ease-in-out infinite;
+          transform-origin: 155px 285px;
+        }
+        @keyframes owl-shadow-breathe {
+          0%, 100% { transform: scaleX(1); opacity: 0.4; }
+          50% { transform: scaleX(1.05); opacity: 0.35; }
+        }
+        @keyframes owl-head-tilt {
+          0%, 100% { transform: rotate(0deg); }
+          35% { transform: rotate(-4deg); }
+          70% { transform: rotate(3deg); }
+        }
+        @keyframes owl-blink {
+          0%, 42%, 46%, 100% { transform: scaleY(1); }
+          44% { transform: scaleY(0.08); }
+        }
+        @keyframes owl-wing {
+          0%, 100% { transform: rotate(0deg); }
+          50% { transform: rotate(-3deg); }
+        }
+      }
+    </style>
+    <filter id="owlShadow" x="80" y="100" width="270" height="340" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="14" stdDeviation="12" flood-color="#2A241C" flood-opacity="0.22"/>
+    </filter>
+  </defs>
+  <rect width="420" height="520" rx="40" fill="url(#bg)"/>
+  <circle cx="210" cy="200" r="150" fill="url(#halo)"/>
+  <ellipse class="owl-shadow" cx="210" cy="445" rx="105" ry="22" fill="#8E9A84" fill-opacity="0.4"/>
+
+  <!-- Branch -->
+  <path d="M72 388C120 368 180 362 248 372C300 380 340 392 352 400C328 408 268 418 210 418C152 418 92 408 68 398C70 392 72 388 72 388Z" fill="url(#branch)"/>
+  <path d="M248 372C268 358 292 348 318 342" stroke="#5A4A3C" stroke-width="8" stroke-linecap="round"/>
+  <circle cx="318" cy="342" r="6" fill="#4A3D32"/>
+
+  <g filter="url(#owlShadow)">
+    <!-- Tail feathers -->
+    <path d="M210 330C188 360 178 392 184 418C190 432 210 438 228 430C242 422 248 400 244 372C240 348 228 332 210 330Z" fill="url(#featherDark)"/>
+
+    <!-- Body -->
+    <ellipse cx="210" cy="295" rx="72" ry="88" fill="url(#featherMid)"/>
+    <ellipse cx="210" cy="300" rx="48" ry="62" fill="url(#belly)"/>
+
+    <!-- Wings -->
+    <g class="owl-wing-left">
+      <path d="M148 268C128 298 122 338 130 372C136 392 152 400 162 384C172 364 176 328 168 296C164 278 156 262 148 268Z" fill="url(#featherDark)"/>
+      <path d="M156 290C148 318 148 348 156 368" stroke="#A89578" stroke-width="4" stroke-linecap="round" opacity="0.4"/>
+    </g>
+    <path d="M272 268C292 298 298 338 290 372C284 392 268 400 258 384C248 364 244 328 252 296C256 278 264 262 272 268Z" fill="url(#featherDark)"/>
+    <path d="M264 290C272 318 272 348 264 368" stroke="#A89578" stroke-width="4" stroke-linecap="round" opacity="0.4"/>
+
+    <!-- Feet on branch -->
+    <path d="M188 378L182 398L194 398L188 378Z" fill="#D4A574"/>
+    <path d="M188 398H176M188 398H200" stroke="#B8895A" stroke-width="3" stroke-linecap="round"/>
+    <path d="M232 378L226 398L238 398L232 378Z" fill="#D4A574"/>
+    <path d="M232 398H220M232 398H244" stroke="#B8895A" stroke-width="3" stroke-linecap="round"/>
+
+    <!-- Head group -->
+    <g class="owl-head">
+      <ellipse cx="210" cy="195" rx="78" ry="70" fill="url(#featherLight)"/>
+      <!-- Ear tufts -->
+      <path d="M148 148L162 118L178 152Z" fill="url(#featherMid)"/>
+      <path d="M272 148L258 118L242 152Z" fill="url(#featherMid)"/>
+      <!-- Face disk -->
+      <ellipse cx="210" cy="200" rx="58" ry="52" fill="#F0E8DA"/>
+      <ellipse cx="210" cy="205" rx="42" ry="36" fill="#FAF6EF"/>
+
+      <!-- Eyes -->
+      <g class="owl-blink">
+        <circle cx="186" cy="192" r="22" fill="#F7F4EE"/>
+        <circle cx="234" cy="192" r="22" fill="#F7F4EE"/>
+        <circle cx="186" cy="192" r="14" fill="#2C2418"/>
+        <circle cx="234" cy="192" r="14" fill="#2C2418"/>
+        <circle cx="190" cy="188" r="5" fill="#FFFFFF" opacity="0.9"/>
+        <circle cx="238" cy="188" r="5" fill="#FFFFFF" opacity="0.9"/>
+        <ellipse cx="186" cy="192" rx="22" ry="22" fill="url(#featherMid)" opacity="0"/>
+      </g>
+
+      <!-- Beak -->
+      <path d="M210 208L198 228L210 238L222 228L210 208Z" fill="#E8A84C"/>
+      <path d="M210 208L210 238" stroke="#C8873A" stroke-width="2"/>
+
+      <!-- Brow feathers -->
+      <path d="M158 172C172 162 192 158 210 160C228 158 248 162 262 172" stroke="#7A6B58" stroke-width="5" stroke-linecap="round" opacity="0.5"/>
+    </g>
+  </g>
+</svg>

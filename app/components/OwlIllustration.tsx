@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 
-export function ThinkerStatue() {
+export function OwlIllustration() {
   return (
     <motion.div
       className="relative mx-auto w-full max-w-xs shrink-0 md:max-w-sm"
@@ -16,12 +16,12 @@ export function ThinkerStatue() {
           aria-hidden
         />
         <object
-          data="/thinker.svg"
+          data="/owl.svg"
           type="image/svg+xml"
           width={420}
           height={520}
           className="relative h-auto w-full drop-shadow-[0_24px_48px_rgba(15,23,42,0.12)]"
-          aria-label="The Thinker illustration"
+          aria-label="Owl illustration"
         />
       </div>
     </motion.div>

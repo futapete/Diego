@@ -7,7 +7,7 @@ import { Mail, ExternalLink, ArrowRight, Gauge, Workflow } from "lucide-react";
 import { projects } from "./data/projects";
 import { Navigation } from "./components/Navigation";
 import { Certifications } from "./components/Certifications";
-import { ThinkerStatue } from "./components/ThinkerStatue";
+import { OwlIllustration } from "./components/OwlIllustration";
 
 const sectionReveal = {
   hidden: { opacity: 0, y: 32 },
@@ -164,7 +164,7 @@ export default function Home() {
               </motion.div>
             </motion.div>
             <motion.div variants={itemReveal} initial="hidden" animate="visible">
-              <ThinkerStatue />
+              <OwlIllustration />
             </motion.div>
           </div>
         </motion.section>
