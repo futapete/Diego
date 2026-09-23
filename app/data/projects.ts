@@ -56,9 +56,7 @@ export const projects = [
     category: "Admin Dashboard",
     image: "/projects/admin-portal/dashboard.png",
     screenshots: [
-      "/projects/admin-portal/dashboard.png",
-      "/projects/admin-portal/overview.png",
-      "/projects/admin-portal/login.png"
+      "/projects/admin-portal/dashboard.png"
     ],
     tags: ["Laravel", "Vue.js", "MySQL", "REST API Integration"],
     link: null,
